@@ -1,0 +1,31 @@
+{
+  "name": "ts-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuicer/ts-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuicer/ts-training/issues"
+  },
+  "homepage": "https://github.com/yuicer/ts-training#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@types/node": "^11.9.4"
+  }
+}

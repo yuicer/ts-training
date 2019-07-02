@@ -3,49 +3,33 @@ namespace decorator_loading {
    *
    * @param param property will be mixin the target Class
    */
-  function loading(isOpenLoading: boolean = false, time?: number): any {
-    return function(target, name, des): any {
-      const oldValue = des.value
-      des.value = function() {
-        const promise = oldValue.apply(this, arguments)
+  function loading(delay: number = 200, debounce: number = 300): any {
+    // debounce
+    const time = 0
+    return function(target, props, descriptor): any {
+      const oldValue = descriptor.value
+      descriptor.value = function() {
+        const fn = oldValue.bind(this, arguments)
 
-        if (!isOpenLoading) {
-          return promise
-        }
-        // loading start before `time` millisecond
-        if (time) {
-          const startTime = Date.now()
-          var timer = setTimeout(() => {
-            console.log('isLoading')
-          }, time)
-          promise.then(() => {
-            if (Date.now() - startTime < time) clearTimeout(timer)
-          })
-        } else {
-          console.log('isLoading')
-          promise.then(() => {
-            console.log('loading disable')
-          })
-        }
+        let timer: any = 0
+        console.log('isLoading')
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn()
+          console.log('done')
+        }, delay)
 
-        return promise
+        return descriptor
       }
     }
   }
 
   class Cat {
-    @loading(true, 300)
-    async say() {
-      await new Promise(resolve => {
-        setTimeout(() => {
-          console.log('nya')
-          resolve()
-        }, 1000)
-      })
+    @loading(3000)
+    say(str) {
+      console.log(str)
     }
   }
 
-  new Cat().say().then(() => {
-    console.log('done')
-  })
+  new Cat().say('miao')
 }

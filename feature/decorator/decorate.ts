@@ -8,10 +8,10 @@ namespace decorator_decorate {
      * @param name methods/key name
      * @param des descriptor. just like `Object.defineProperty(obj, prop, descriptor)`
      */
-    return function(target, name, des): any {
+    return function(target, props, descriptor): any {
       // old function
-      const oldValue = des.value
-      des.value = function() {
+      const oldValue = descriptor.value
+      descriptor.value = function() {
         console.log(str)
         oldValue.apply(null, arguments)
       }

@@ -13,5 +13,3 @@ function Quick(_arr: number[]): number[] {
 }
 
 export default Quick
-
-console.log(Quick([2, 1, 3, 5, 0, -2, -3, 20, 12]))

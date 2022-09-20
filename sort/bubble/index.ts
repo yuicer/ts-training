@@ -1,16 +1,18 @@
-function Bubble(_arr: number[]): number[] {
-  const arr: number[] = _arr.slice()
-
+function Bubble(arr: number[]): number[] {
   for (let index = 0; index < arr.length; index++) {
     for (let pIndex = 0; pIndex < arr.length - index; pIndex++)
       if (arr[pIndex] > arr[pIndex + 1]) {
-        let cache = arr[pIndex + 1]
-        arr[pIndex + 1] = arr[pIndex]
-        arr[pIndex] = cache
+        swap(arr, pIndex, pIndex + 1);
       }
   }
 
-  return arr
+  return arr;
 }
 
-export default Bubble
+function swap(arr: number[], i: number, j: number) {
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+export { Bubble };

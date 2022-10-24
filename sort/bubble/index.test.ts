@@ -1,4 +1,10 @@
-import Bubble from './index'
-import Tester from '../tester'
+import { Bubble } from './index';
+import { testArr } from '../test-data';
 
-new Tester(Bubble).start('冒泡排序')
+describe('qucik sort', () => {
+  testArr.forEach((x) => {
+    it('local', () => {
+      expect(Bubble(x)).toEqual(x.sort((a, b) => a - b));
+    });
+  });
+});

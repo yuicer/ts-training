@@ -18,15 +18,11 @@ function isWordInBoard(board: string[][], word: string): boolean {
 }
 
 function check(board: string[][], i: number, j: number, word: string): boolean {
-  if (!word[0]) return true;
-
   let result = false;
   // top right bottom left
 
   ['top', 'right', 'bottom', 'left'].forEach((x) => {
     const { ii, jj } = getPosition(x as any, i, j);
-
-    if (result) return;
 
     if (board[ii]?.[jj] && board[ii][jj] !== '*' && board[ii][jj] === word[0]) {
       const temp = board[ii][jj];

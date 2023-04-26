@@ -6,10 +6,11 @@ export function findMaxStringN(str: string) {
   let startIndex = 0;
   let endIndex = startIndex + 1;
 
-  while (startIndex < str.length && endIndex <= str.length) {
+  while (startIndex < str.length && endIndex < str.length) {
     let curStr = str.slice(startIndex, endIndex);
     if (!hasContainStr(curStr, str[endIndex])) {
-      if (str.slice(startIndex, endIndex + 1).length > result.length)
+      const newStr = str.slice(startIndex, endIndex + 1);
+      if (newStr.length > result.length)
         result = str.slice(startIndex, endIndex + 1);
       endIndex++;
     } else {

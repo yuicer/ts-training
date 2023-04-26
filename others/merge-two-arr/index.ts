@@ -52,3 +52,17 @@ function swap(arrA, aIndex, arrB, bIndex) {
 }
 
 export { merge1, merge2 };
+
+function merge3(arrA: number[], arrB: number[]) {
+  const result = [];
+  while (arrA.length || arrB.length) {
+    if (arrA[0] < arrB[0]) {
+      result.push(arrA.shift());
+    } else {
+      result.push(arrB.shift());
+    }
+  }
+  return result;
+}
+
+export { merge3 };

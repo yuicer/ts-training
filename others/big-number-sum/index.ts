@@ -29,3 +29,22 @@ function bigNumberAdd(str1: string, str2: string): string {
 }
 
 export { bigNumberAdd };
+
+export function add(strA: string, strB: string, c: number = 0): string {
+  if (strA.length === 0 && strB.length == 0) {
+    if (c) return c + '';
+    return '';
+  }
+
+  const a = +strA.slice(-1);
+  const b = +strB.slice(-1);
+
+  const num = a + b + c;
+  const nextC = Math.floor(num / 10);
+  const str = (num % 10) + '';
+
+  const nextA = strA.slice(0, -1);
+  const nextB = strB.slice(0, -1);
+
+  return add(nextA, nextB, nextC) + str;
+}
